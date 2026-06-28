@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f8f7f3;
+    color:#111;
+    overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 8%;
+    z-index:1000;
+    transition:.4s;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(8px);
+}
+
+.logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;
+    letter-spacing:6px;
+    font-weight:700;
+}
+
+nav ul{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#111;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:14px;
+    position:relative;
+}
+
+nav ul li a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#111;
+    transition:.4s;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    width:100%;
+    height:100vh;
+    background:url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1800&q=80") center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+}
+
+.hero-content{
+    position:relative;
+    color:white;
+    text-align:center;
+    z-index:5;
+}
+
+.hero-content h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:72px;
+    letter-spacing:8px;
+    margin-bottom:20px;
+}
+
+.hero-content .subtitle{
+    font-size:20px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#f0f0f0;
+    margin-bottom:40px;
+    font-weight:300;
+}
+
+.btn{
+    display:inline-block;
+    padding:16px 40px;
+    border:2px solid white;
+    color:white;
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    transition:.4s;
+}
+
+.btn:hover{
+    background:white;
+    color:black;
+}
+
+/* ================= SECTION ================= */
+
+.fashion-section{
+    width:90%;
+    margin:100px auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:50px;
+    letter-spacing:5px;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#777;
+    letter-spacing:1px;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:35px;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    background:#fff;
+}
+
+.card img{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+    display:block;
+    transition:.7s ease;
+}
+
+.card:hover img{
+    transform:scale(1.08);
+}
+
+.overlay{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    padding:30px;
+    color:white;
+    background:linear-gradient(to top,
+    rgba(0,0,0,.85),
+    rgba(0,0,0,.2),
+    transparent);
+
+    transform:translateY(100%);
+    transition:.5s ease;
+}
+
+.card:hover .overlay{
+    transform:translateY(0);
+}
+
+.overlay h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;
+    margin-bottom:8px;
+    letter-spacing:2px;
+}
+
+.overlay p{
+    font-size:15px;
+    letter-spacing:1px;
+}
+
+/* ================= LIGHTBOX ================= */
+
+#lightbox{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.95);
+
+    z-index:99999;
+}
+
+#lightbox img{
+
+    max-width:85%;
+    max-height:85%;
+    object-fit:contain;
+
+    border-radius:5px;
+}
+
+.close{
+
+    position:absolute;
+
+    top:25px;
+    right:40px;
+
+    color:white;
+
+    font-size:55px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.close:hover{
+
+    transform:rotate(90deg);
+}
+
+.nav-btn{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border:none;
+
+    background:rgba(255,255,255,.18);
+
+    color:white;
+
+    font-size:34px;
+
+    padding:18px 22px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.nav-btn:hover{
+
+    background:white;
+    color:black;
+}
+
+.prev{
+
+    left:40px;
+}
+
+.next{
+
+    right:40px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    background:#111;
+
+    color:white;
+
+    text-align:center;
+
+    padding:80px 20px;
+}
+
+footer h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:42px;
+
+    letter-spacing:5px;
+
+    margin-bottom:15px;
+}
+
+footer p{
+
+    color:#bbb;
+
+    margin:10px 0;
+}
+
+.credit{
+
+    margin-top:25px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    font-size:14px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:992px){
+
+    .hero-content h1{
+
+        font-size:54px;
+    }
+
+    nav{
+
+        padding:20px 5%;
+    }
+
+    nav ul{
+
+        gap:20px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    nav{
+
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav ul{
+
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero-content h1{
+
+        font-size:42px;
+
+        letter-spacing:4px;
+    }
+
+    .hero-content p{
+
+        font-size:17px;
+    }
+
+    .section-title h2{
+
+        font-size:38px;
+    }
+
+    .gallery{
+
+        grid-template-columns:1fr;
+    }
+
+    .card img{
+
+        height:420px;
+    }
+
+    .nav-btn{
+
+        font-size:24px;
+
+        padding:12px 16px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .hero-content h1{
+
+        font-size:32px;
+    }
+
+    .btn{
+
+        padding:14px 28px;
+
+        font-size:13px;
+    }
+
+    .logo{
+
+        font-size:28px;
+    }
+
+}
+
